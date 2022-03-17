@@ -10,7 +10,7 @@ import auth from "../middleware/auth.js"
 
 const router = express.Router()
 
-router.get("/", auth, getAllPostsWithAuthor)
+router.get("/", getAllPostsWithAuthor)
 router.get("/:postId", auth, getOnePostWithAuthor)
 router.get("/:postId/comments", auth, getAllCommentsByPostWithAutor)
 router.put("/:postId", auth, modifyOnePost)

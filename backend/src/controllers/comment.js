@@ -29,7 +29,6 @@ export const modifyOneComment = async (req, res) => {
     commentId,
     {
       content,
-      updatedAt: new Date().toISOString(),
     }
   )
 

@@ -31,7 +31,6 @@ export const signUp = async (req, res) => {
     passwordHash: hash,
     passwordSalt: salt,
     role_id: 1,
-    createdAt: new Date().toISOString(),
   })
 
   res.status(201).send({ message: "Account created" })
@@ -97,7 +96,6 @@ export const modifyAccount = async (req, res) => {
       displayName,
       passwordHash: hash,
       passwordSalt: salt,
-      updatedAt: new Date().toISOString(),
     })
 
     res.status(201).send({ message: "Account modified with password" })
@@ -107,7 +105,6 @@ export const modifyAccount = async (req, res) => {
 
   await UserModel.query().updateAndFetchById(userId, {
     displayName,
-    updatedAt: new Date().toISOString(),
   })
 
   res.status(201).send({ message: "Account modified" })

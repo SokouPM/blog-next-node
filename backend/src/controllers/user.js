@@ -19,7 +19,6 @@ export const createPostWithUserId = async (req, res) => {
     content,
     user_id: userId,
     publicationDate: new Date().toISOString(),
-    createdAt: new Date().toISOString(),
   })
 
   res.status(201).send({ status: "Post created" })
@@ -52,32 +51,46 @@ export const createCommentWithUserIdAndPostId = async (req, res) => {
     user_id: userId,
     post_id: postId,
     publicationDate: new Date().toISOString(),
-    createdAt: new Date().toISOString(),
   })
 
   res.status(201).send({ status: "Comment created" })
 }
 
-export const getAllUsers = async (req, res) => {
-  const users = await UserModel.query()
+export const getAllUsersWithRole = async (req, res) => {
+  const usersWithRole = await UserModel.query()
+    .select(
+      "users.displayName",
+      "users.email",
+      "users.role_id",
+      "roles.name as role"
+    )
+    .joinRelated("roles")
 
-  res.status(200).send(users)
+  res.status(200).send(usersWithRole)
 }
 
-export const getOneUser = async (req, res) => {
+export const getOneUserWithRole = async (req, res) => {
   const {
     params: { userId },
   } = req
 
-  const user = await UserModel.query().findById(userId)
+  const userWithRole = await UserModel.query()
+    .findById(userId)
+    .select(
+      "users.displayName",
+      "users.email",
+      "users.role_id",
+      "roles.name as role"
+    )
+    .joinRelated("roles")
 
-  if (!user) {
+  if (!userWithRole) {
     res.status(404).send({ error: "User not found" })
 
     return
   }
 
-  res.status(200).send(user)
+  res.status(200).send(userWithRole)
 }
 
 export const getAllPostsByUser = async (req, res) => {
@@ -114,7 +127,6 @@ export const changeRole = async (req, res) => {
 
   await UserModel.query().updateAndFetchById(userId, {
     role_id: role,
-    updatedAt: new Date().toISOString(),
   })
 
   res.status(200).send({ status: "User role changed" })

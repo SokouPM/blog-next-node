@@ -3,7 +3,8 @@ import PostModel from "../db/models/Post.js"
 export const getAllPostsWithAuthor = async (req, res) => {
   const postsWithAuthor = await PostModel.query()
     .select("posts.*", "users.displayName as author")
-    .joinRelated("users")
+    .leftJoinRelated("users")
+    .orderBy("createdAt")
 
   res.status(200).send(postsWithAuthor)
 }
@@ -16,7 +17,7 @@ export const getOnePostWithAuthor = async (req, res) => {
   const postWithAuthor = await PostModel.query()
     .findById(postId)
     .select("posts.*", "users.displayName as author")
-    .joinRelated("users")
+    .leftJoinRelated("users")
 
   if (!postWithAuthor) {
     res.status(404).send({ error: "Post not found" })
@@ -43,7 +44,8 @@ export const getAllCommentsByPostWithAutor = async (req, res) => {
   const comments = await posts
     .$relatedQuery("comments")
     .select("comments.*", "users.displayName as author")
-    .joinRelated("users")
+    .leftJoinRelated("users")
+    .orderBy("createdAt")
 
   res.status(200).send(comments)
 }
@@ -57,7 +59,6 @@ export const modifyOnePost = async (req, res) => {
   const updatedPost = await PostModel.query().updateAndFetchById(postId, {
     title,
     content,
-    updatedAt: new Date().toISOString(),
   })
 
   if (!updatedPost) {

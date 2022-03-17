@@ -2,12 +2,12 @@ import Link from "next/link"
 
 const Nav = () => {
   return (
-    <nav className="text-lg flex flex-row items-center justify-between">
-      <Link href="signUp">
-        <a>Sign-up</a>
+    <nav className="text-2xl font-bold">
+      <Link href="/signup">
+        <a className="px-3 py-2 hover:text-gray-400">Sign Up</a>
       </Link>
-      <Link href="/signIn">
-        <a>Sign-in</a>
+      <Link href="/signin">
+        <a className="px-3 py-2 hover:text-gray-400">Sign In</a>
       </Link>
     </nav>
   )

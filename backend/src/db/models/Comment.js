@@ -25,6 +25,15 @@ class CommentModel extends Model {
       },
     }
   }
+
+  $beforeInsert() {
+    this.publicationDate = new Date().toISOString()
+    this.createdAt = new Date().toISOString()
+  }
+
+  $beforeUpdate() {
+    this.updatedAt = new Date().toISOString()
+  }
 }
 
 export default CommentModel

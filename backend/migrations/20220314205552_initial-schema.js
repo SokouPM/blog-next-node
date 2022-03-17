@@ -25,7 +25,7 @@ export const up = async (knex) => {
   await knex.schema.createTable("posts", (table) => {
     table.increments().unique()
     table.string("title").notNullable()
-    table.string("content").notNullable()
+    table.string("content", 2000).notNullable()
     table.date("publicationDate").notNullable()
     table.integer("user_id")
     table
@@ -39,7 +39,7 @@ export const up = async (knex) => {
 
   await knex.schema.createTable("comments", (table) => {
     table.increments().unique()
-    table.string("content").notNullable()
+    table.string("content", 2000).notNullable()
     table.date("publicationDate").notNullable()
     table.integer("user_id")
     table
