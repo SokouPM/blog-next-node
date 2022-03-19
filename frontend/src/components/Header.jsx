@@ -8,7 +8,7 @@ const Header = ({ pagename }) => {
   const { session } = useContext(AppContext)
 
   return (
-    <header className="flex bg-slate-200 justify-between items-center mb-10 px-5 py-5">
+    <header className="flex bg-slate-300 justify-between items-center mb-10 px-5 py-5">
       <Link href="/">
         <a>
           <h1 className="text-5xl font-bold">{pagename} | Blog project</h1>

@@ -57,8 +57,6 @@ export const AppContextProvider = (props) => {
 
         if (redirect) {
           router.push(decodeURIComponent(redirect))
-        } else {
-          router.push("/")
         }
       } catch (err) {
         setSignInError(err.response.data.error)
@@ -80,11 +78,11 @@ export const AppContextProvider = (props) => {
     [router]
   )
 
-  const signOut = useCallback(() => {
+  const signOut = () => {
     localStorage.clear()
     setSession(null)
     router.push("/signin")
-  })
+  }
 
   if (!session && Page.private) {
     return null

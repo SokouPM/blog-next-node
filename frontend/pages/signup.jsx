@@ -36,73 +36,75 @@ const Signup = () => {
 
   return (
     <Layout pagename="Sign Up">
-      <div>
+      <div className="w-4/5 mx-auto border-2 rounded shadow">
         {signUpError ? (
           <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
             <FiAlertTriangle className="text-5xl mr-3" />
             {signUpError}
           </div>
         ) : null}
-        <h2 className="text-4xl font-bold mb-5">Sign Up</h2>
-        <Formik
-          initialValues={{
-            displayName: "Test",
-            email: "test@test.fr",
-            password: "5Az666",
-            passwordConfirm: "5Az666",
-          }}
-          validationSchema={displayingErrorMessagesSchema}
-          onSubmit={handleFormSubmit}
-        >
-          {({ errors, touched }) => (
-            <Form>
-              <FormField
-                label="Username"
-                id="displayName"
-                name="displayName"
-                placeholder="Sokou"
-                errorType={errors.displayName}
-                touchedType={touched.displayName}
-              />
-              <FormField
-                label="Email"
-                id="email"
-                name="email"
-                placeholder="exemple@mail.com"
-                errorType={errors.email}
-                touchedType={touched.email}
-              />
-              <FormField
-                label="Password"
-                type={PasswordField}
-                id="password"
-                name="password"
-                placeholder="1 uppercase, 1 lowercase, 1 number and between 6 and 30 characters "
-                errorType={errors.password}
-                touchedType={touched.password}
-              />
-              <FormField
-                label="Confirm password"
-                type={PasswordField}
-                id="passwordConfirm"
-                name="passwordConfirm"
-                placeholder="Same as password "
-                errorType={errors.passwordConfirm}
-                touchedType={touched.passwordConfirm}
-              />
-              <button
-                className="bg-slate-200  mt-2 text-lg font-bold border px-4 py-2 hover:bg-slate-100 "
-                type="submit"
-              >
-                Sign Up
-              </button>
-            </Form>
-          )}
-        </Formik>
-        <p className="mt-4 text-xl text-center">
+        <div className="px-10 pt-6">
+          <h2 className="text-4xl font-bold mb-5">Sign Up</h2>
+          <Formik
+            initialValues={{
+              displayName: "Test",
+              email: "test@test.fr",
+              password: "5Az666",
+              passwordConfirm: "5Az666", // TODO change
+            }}
+            validationSchema={displayingErrorMessagesSchema}
+            onSubmit={handleFormSubmit}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <FormField
+                  label="Username"
+                  id="displayName"
+                  name="displayName"
+                  placeholder="Sokou"
+                  errorType={errors.displayName}
+                  touchedType={touched.displayName}
+                />
+                <FormField
+                  label="Email"
+                  id="email"
+                  name="email"
+                  placeholder="exemple@mail.com"
+                  errorType={errors.email}
+                  touchedType={touched.email}
+                />
+                <FormField
+                  label="Password"
+                  type={PasswordField}
+                  id="password"
+                  name="password"
+                  placeholder="1 uppercase, 1 lowercase, 1 number and between 6 and 30 characters "
+                  errorType={errors.password}
+                  touchedType={touched.password}
+                />
+                <FormField
+                  label="Confirm password"
+                  type={PasswordField}
+                  id="passwordConfirm"
+                  name="passwordConfirm"
+                  placeholder="Same as password "
+                  errorType={errors.passwordConfirm}
+                  touchedType={touched.passwordConfirm}
+                />
+                <button
+                  className="bg-green-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
+                  type="submit"
+                >
+                  Sign Up
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+        <p className="mt-6 p-5 text-xl text-center bg-slate-200">
           ⚠ Already have an account?{" "}
           <Link href="/signin">
-            <a className="font-bold">Sign In</a>
+            <a className="font-bold hover:underline">Sign In</a>
           </Link>
         </p>
       </div>

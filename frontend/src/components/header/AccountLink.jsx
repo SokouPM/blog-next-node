@@ -10,12 +10,17 @@ const AccountLink = () => {
 
   return (
     <div className="flex items-center">
-      <Link href={`/accounts/${userId}`}>
-        <a>
-          <p className="text-3xl font-bold mr-5">{pseudo}</p>
+      <Link href={`/users/${userId}`}>
+        <a className=" mr-2 py-1 px-3 text-3xl font-bold text-white bg-blue-500 cursor-pointer rounded hover:bg-blue-300 focus:outline focus:outline-3 focus:outline-blue-300 transition-all hover:scale-105">
+          <p className="">{pseudo}</p>
         </a>
       </Link>
-      <RiLogoutBoxFill className="text-3xl cursor-pointer" onClick={signOut} />
+      <button
+        className="p-3 text-2xl text-white bg-red-500 cursor-pointer rounded-full hover:bg-red-300 focus:outline focus:outline-3 focus:outline-red-300 transition-all hover:scale-105"
+        onClick={signOut}
+      >
+        <RiLogoutBoxFill />
+      </button>
     </div>
   )
 }

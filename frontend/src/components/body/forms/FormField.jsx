@@ -7,10 +7,10 @@ const FormField = (props) => {
         {props.label}
       </label>
       <Field
-        className={`w-full rounded py-1 px-2 mt-1 ${
+        className={`w-full rounded py-2 px-3 mt-1 ${
           props.touchedType && props.errorType
-            ? "border-2 border-red-500"
-            : "border border-gray-300"
+            ? "border-2 border-red-500 errorField"
+            : "border-2 border-gray-300"
         }`}
         as={props.type}
         id={props.id}
@@ -18,7 +18,9 @@ const FormField = (props) => {
         placeholder={props.placeholder}
       ></Field>
       {props.touchedType && props.errorType && (
-        <div className="text-red-500">{props.errorType}</div>
+        <div className="errorField text-red-500 font-bold">
+          {props.errorType}
+        </div>
       )}
     </div>
   )
