@@ -106,7 +106,7 @@ export const getAllPostsByUser = async (req, res) => {
     return
   }
 
-  const posts = await user.$relatedQuery("posts")
+  const posts = await user.$relatedQuery("posts").orderBy("createdAt", "desc")
 
   res.status(200).send(posts)
 }

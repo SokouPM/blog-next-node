@@ -4,7 +4,7 @@ export const getAllPostsWithAuthor = async (req, res) => {
   const postsWithAuthor = await PostModel.query()
     .select("posts.*", "users.displayName as author")
     .leftJoinRelated("users")
-    .orderBy("createdAt")
+    .orderBy("createdAt", "desc")
 
   res.status(200).send(postsWithAuthor)
 }
@@ -45,7 +45,7 @@ export const getAllCommentsByPostWithAutor = async (req, res) => {
     .$relatedQuery("comments")
     .select("comments.*", "users.displayName as author")
     .leftJoinRelated("users")
-    .orderBy("createdAt")
+    .orderBy("createdAt", "desc")
 
   res.status(200).send(comments)
 }
