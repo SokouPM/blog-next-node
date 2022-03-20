@@ -18,7 +18,6 @@ export const createPostWithUserId = async (req, res) => {
     title,
     content,
     user_id: userId,
-    publicationDate: new Date().toISOString(),
   })
 
   res.status(201).send({ status: "Post created" })
@@ -38,19 +37,10 @@ export const createCommentWithUserIdAndPostId = async (req, res) => {
     return
   }
 
-  const post = await user.$relatedQuery("posts").where("id", postId)
-
-  if (!post.length) {
-    res.status(404).send({ error: "Post not found" })
-
-    return
-  }
-
   await user.$relatedQuery("comments").insert({
     content,
     user_id: userId,
     post_id: postId,
-    publicationDate: new Date().toISOString(),
   })
 
   res.status(201).send({ status: "Comment created" })
@@ -77,6 +67,7 @@ export const getOneUserWithRole = async (req, res) => {
   const userWithRole = await UserModel.query()
     .findById(userId)
     .select(
+      "users.id",
       "users.displayName",
       "users.email",
       "users.role_id",

@@ -23,7 +23,7 @@ export const seed = async (knex) => {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum dui id est fringilla mollis. Aenean iaculis lobortis maximus. Suspendisse ac odio ex. Nullam luctus tellus a metus maximus, et tincidunt risus fringilla. Nulla facilisi. Sed tincidunt commodo sapien et semper. Mauris varius, lacus a dapibus lobortis, massa mauris porta metus, pharetra tincidunt tellus velit eget massa. Quisque convallis at nunc vel feugiat. Duis tellus enim, viverra sit amet libero sit amet, suscipit egestas mi. Nulla congue mollis magna eu tincidunt. Phasellus ultrices nisl eu risus porttitor, id luctus tellus aliquam. Ut et justo id ipsum viverra porttitor. Vestibulum ultrices eu diam eget vulputate. Vivamus ornare augue a ornare aliquet. Sed eu auctor dolor. Nam sodales velit quis egestas vehicula. In tortor urna, posuere eu arcu ultrices, finibus dapibus mi. Nullam semper, elit at aliquet accumsan, tellus est dictum leo, non fringilla tortor magna a urna. Fusce sodales eros eu quam rutrum tincidunt. Duis a elit lobortis, placerat odio ut, imperdiet leo. Sed ultrices tellus vel mauris faucibus, quis feugiat nibh aliquam. Donec non sem id odio molestie pretium quis ut purus. Duis tristique ipsum sed dui feugiat, eget pellentesque velit mattis. Quisque in dapibus neque. Proin at elit sed urna luctus pharetra. Mauris auctor lorem ut nunc luctus, vel ultrices lectus pellentesque. ",
       publicationDate: new Date().toISOString(),
-      user_id: 3,
+      user_id: 1,
     },
     {
       id: 4,
@@ -62,7 +62,7 @@ export const seed = async (knex) => {
       content:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum dui id est fringilla mollis. Aenean iaculis lobortis maximus. Suspendisse ac odio ex. Nullam luctus tellus a metus maximus, et tincidunt risus fringilla. Nulla facilisi. Sed tincidunt commodo sapien et semper. Mauris varius, lacus a dapibus lobortis, massa mauris porta metus, pharetra tincidunt tellus velit eget massa. Quisque convallis at nunc vel feugiat. Duis tellus enim, viverra sit amet libero sit amet, suscipit egestas mi. Nulla congue mollis magna eu tincidunt. Phasellus ultrices nisl eu risus porttitor, id luctus tellus aliquam. Ut et justo id ipsum viverra porttitor. Vestibulum ultrices eu diam eget vulputate. Vivamus ornare augue a ornare aliquet. Sed eu auctor dolor. Nam sodales velit quis egestas vehicula. In tortor urna, posuere eu arcu ultrices, finibus dapibus mi. Nullam semper, elit at aliquet accumsan, tellus est dictum leo, non fringilla tortor magna a urna. Fusce sodales eros eu quam rutrum tincidunt. Duis a elit lobortis, placerat odio ut, imperdiet leo. Sed ultrices tellus vel mauris faucibus, quis feugiat nibh aliquam. Donec non sem id odio molestie pretium quis ut purus. Duis tristique ipsum sed dui feugiat, eget pellentesque velit mattis. Quisque in dapibus neque. Proin at elit sed urna luctus pharetra. Mauris auctor lorem ut nunc luctus, vel ultrices lectus pellentesque. ",
       publicationDate: new Date().toISOString(),
-      user_id: 3,
+      user_id: 2,
     },
     {
       id: 9,
