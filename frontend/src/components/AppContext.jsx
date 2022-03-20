@@ -91,7 +91,15 @@ export const AppContextProvider = (props) => {
   return (
     <AppContext.Provider
       {...otherProps}
-      value={{ session, signInError, signUpError, signIn, signUp, signOut }}
+      value={{
+        router,
+        session,
+        signInError,
+        signUpError,
+        signIn,
+        signUp,
+        signOut,
+      }}
     />
   )
 }

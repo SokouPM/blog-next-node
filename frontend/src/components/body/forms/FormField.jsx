@@ -16,6 +16,7 @@ const FormField = (props) => {
         id={props.id}
         name={props.name}
         placeholder={props.placeholder}
+        rows={props.rows}
       ></Field>
       {props.touchedType && props.errorType && (
         <div className="errorField text-red-500 font-bold">

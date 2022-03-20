@@ -1,17 +1,26 @@
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
 import { FiAlertTriangle } from "react-icons/fi"
+import AppContext from "../src/components/AppContext"
 import api from "../src/components/services/api"
 import Layout from "../src/components/Layout"
 import Spinner from "../src/components/body/Spinner"
+import CreatePostForm from "../src/components/body/forms/CreatePostForm"
 
 const formatDate = (date) => {
   return (date = new Date(date).toLocaleDateString())
 }
 
 const Home = () => {
+  const { session } = useContext(AppContext)
   const [posts, setPosts] = useState(null)
   const [apiError, setApiError] = useState(null)
+
+  let userRoleId = null
+
+  if (session) {
+    userRoleId = JSON.parse(session).payload.user.roleId
+  }
 
   useEffect(() => {
     api
@@ -43,6 +52,7 @@ const Home = () => {
   if (!posts.length) {
     return (
       <Layout pagename="Home">
+        {userRoleId && userRoleId > 1 ? <CreatePostForm /> : null}
         <p className="text-center text-2xl">
           No post found be the first to create one 👍
         </p>
@@ -52,16 +62,17 @@ const Home = () => {
 
   return (
     <Layout pagename="Home">
+      {userRoleId && userRoleId > 1 ? <CreatePostForm /> : null}
       <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
         Latest posts
       </h3>
-      <ul className="mb-10 border rounded-b shadow">
+      <ul className="mb-10 border break-all rounded-b shadow">
         {posts.map((item, index) => (
           <li
             key={item.id}
             className={`p-5 ${index % 2 == 0 ? null : "bg-slate-100"}`}
           >
-            <Link href={`/posts/${item.id}`} passHref>
+            <Link href={`/posts/${encodeURIComponent(item.id)}`} passHref>
               <a className="text-4xl font-bold hover:text-blue-500">
                 {item.title}
               </a>
@@ -69,7 +80,7 @@ const Home = () => {
             <p className="mb-3">
               by{" "}
               {item.author ? (
-                <Link href={`/users/${item.user_id}`}>
+                <Link href={`/users/${encodeURIComponent(item.user_id)}`}>
                   <a className="font-bold underline hover:text-blue-500">
                     {item.author}
                   </a>
@@ -79,9 +90,9 @@ const Home = () => {
               )}{" "}
               on <span>{formatDate(item.publicationDate)}</span>
             </p>
-            <Link href={`/posts/${item.id}`}>
+            <Link href={`/posts/${encodeURIComponent(item.id)}`}>
               <a>
-                <p className="rounded text-justify cursor-pointer w-full hover:text-blue-500">
+                <p className="text-justify cursor-pointer w-full hover:bg-gray-200">
                   {item.content}
                 </p>
               </a>

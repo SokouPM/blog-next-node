@@ -8,7 +8,7 @@ const formatDate = (date) => {
   return (date = new Date(date).toLocaleDateString())
 }
 
-const UserMessagesList = ({ userId }) => {
+const UserPostsList = ({ userId }) => {
   const [posts, setPosts] = useState(null)
   const [apiError, setApiError] = useState(null)
 
@@ -27,7 +27,7 @@ const UserMessagesList = ({ userId }) => {
 
   if (apiError) {
     return (
-      <section className="shadow">
+      <section className="shadow rounded-b">
         <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
           User posts
         </h3>
@@ -40,7 +40,7 @@ const UserMessagesList = ({ userId }) => {
 
   if (!posts) {
     return (
-      <section className="shadow pb-10">
+      <section className="shadow pb-10 rounded-b">
         <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
           User posts
         </h3>
@@ -51,7 +51,7 @@ const UserMessagesList = ({ userId }) => {
 
   if (!posts.length) {
     return (
-      <section className="shadow pb-10">
+      <section className="shadow pb-10 rounded-b">
         <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
           User posts
         </h3>
@@ -61,11 +61,11 @@ const UserMessagesList = ({ userId }) => {
   }
 
   return (
-    <section className="shadow">
+    <section className="shadow rounded-b">
       <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
         User posts
       </h3>
-      <ul className="mb-10 h-96 border rounded-b overflow-x-auto">
+      <ul className="mb-10 max-h-96 border break-all rounded-b overflow-x-auto">
         {posts.map((item, index) => (
           <Link key={item.id} href={`/posts/${item.id}`} passHref>
             <li
@@ -86,4 +86,4 @@ const UserMessagesList = ({ userId }) => {
   )
 }
 
-export default UserMessagesList
+export default UserPostsList

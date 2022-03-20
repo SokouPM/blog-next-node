@@ -5,17 +5,16 @@ import { FiAlertTriangle } from "react-icons/fi"
 import AppContext from "../../src/components/AppContext"
 import Layout from "../../src/components/Layout"
 import api from "../../src/components/services/api"
+import ModifyCommentForm from "../../src/components/body/forms/ModifyCommentForm"
 import Spinner from "../../src/components/body/Spinner"
-import CommentsList from "../../src/components/body/CommentsList"
-import ModifyPostForm from "../../src/components/body/forms/ModifyPostForm"
 
 const formatDate = (date) => {
   return (date = new Date(date).toLocaleDateString())
 }
 
-const PostPage = () => {
+const CommentPage = () => {
   const { session, router } = useContext(AppContext)
-  const [post, setPost] = useState(null)
+  const [comment, setComment] = useState(null)
   const [apiError, setApiError] = useState(null)
   const [isModified, setIsModified] = useState(false)
 
@@ -23,30 +22,30 @@ const PostPage = () => {
   const userRoleId = JSON.parse(session).payload.user.roleId
 
   const {
-    query: { postId },
+    query: { commentId },
   } = useRouter()
 
-  const deletePost = async () => {
-    await api.delete(`/posts/${postId}`)
+  const deleteComment = async () => {
+    await api.delete(`/comments/${commentId}`)
     router.back()
   }
 
   useEffect(() => {
-    if (postId && !isNaN(postId)) {
+    if (commentId && !isNaN(commentId)) {
       api
-        .get(`/posts/${postId}`)
-        .then((response) => setPost(response.data))
+        .get(`/comments/${commentId}`)
+        .then((response) => setComment(response.data))
         .catch((error) =>
           setApiError(
             error.response ? error.response.data.error : error.message
           )
         )
     }
-  }, [postId])
+  }, [commentId])
 
   if (apiError) {
     return (
-      <Layout pagename={`Post: ${postId}`}>
+      <Layout pagename={`Comment: ${commentId}`}>
         <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
           <FiAlertTriangle className="text-5xl mr-3" /> {apiError}
         </div>
@@ -54,64 +53,65 @@ const PostPage = () => {
     )
   }
 
-  if (isNaN(postId) && postId !== undefined) {
+  if (isNaN(commentId) && commentId !== undefined) {
     return (
-      <Layout pagename={`Post: ${postId}`}>
+      <Layout pagename={`Comment: ${commentId}`}>
         <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
-          <FiAlertTriangle className="text-5xl mr-3" /> Post Id must be a number
+          <FiAlertTriangle className="text-5xl mr-3" /> Comment Id must be a
+          number
         </div>
       </Layout>
     )
   }
 
-  if (!post) {
+  if (!comment) {
     return (
-      <Layout pagename={`Post: ${postId}`}>
-        <Spinner contentname="post" />
+      <Layout pagename={`Post: ${commentId}`}>
+        <Spinner contentname="comment" />
       </Layout>
     )
   }
 
   return (
-    <Layout pagename={`Post: ${postId}`}>
+    <Layout pagename={`Comment: ${commentId}`}>
       {!isModified ? (
-        <div className="mb-8 break-all p-10 border-2 rounded shadow">
-          <p className="text-4xl font-bold">{post.title}</p>
-          <p className="mb-3">
-            by{" "}
-            {post.author ? (
-              <Link href={`/users/${encodeURIComponent(post.user_id)}`}>
+        <div className="mb-8 p-10 border-2 rounded shadow">
+          <p className="mb-3 break-all font-bold">
+            {comment.author ? (
+              <Link href={`/users/${encodeURIComponent(comment.user_id)}`}>
                 <a className="font-bold underline hover:text-blue-500">
-                  {post.author}
+                  {comment.author}
                 </a>
               </Link>
             ) : (
               <span className="font-bold underline">Deleted user</span>
             )}{" "}
-            on <span>{formatDate(post.publicationDate)}</span>
+            commented on <span>{formatDate(comment.publicationDate)}</span>
           </p>
-          <p className="text-justify w-full">{post.content}</p>
+          <p className="text-justify break-all w-full">{comment.content}</p>
         </div>
       ) : (
-        <ModifyPostForm postId={postId} />
+        <ModifyCommentForm commentId={commentId} />
       )}
 
       {!isModified ? (
-        (post.user_id == sessionId || userRoleId == 3) && userRoleId != 1 ? (
+        comment.user_id == sessionId ||
+        comment.postAuthorId == sessionId ||
+        userRoleId == 3 ? (
           <section className="w-max mb-10 mx-auto">
-            {post.user_id == sessionId ? (
+            {comment.user_id == sessionId ? (
               <button
                 className="bg-blue-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-blue-300 focus:outline focus:outline-3 focus:outline-blue-300 transition-all hover:scale-105"
                 onClick={() => setIsModified(true)}
               >
-                Modify post
+                Modify comment
               </button>
             ) : null}
             <button
               className="bg-red-500 text-white mt-2 ml-2 text-lg font-bold border px-4 py-2 rounded  hover:bg-red-300 focus:outline focus:outline-3 focus:outline-red-300 transition-all hover:scale-105"
-              onClick={deletePost}
+              onClick={deleteComment}
             >
-              Delete post
+              Delete comment
             </button>
           </section>
         ) : null
@@ -125,12 +125,10 @@ const PostPage = () => {
           </button>
         </section>
       )}
-
-      <CommentsList postId={postId} postUserId={post.user_id} />
     </Layout>
   )
 }
 
-PostPage.private = true
+CommentPage.private = true
 
-export default PostPage
+export default CommentPage

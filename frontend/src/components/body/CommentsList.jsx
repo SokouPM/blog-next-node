@@ -1,16 +1,23 @@
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FiAlertTriangle } from "react-icons/fi"
+import AppContext from "../AppContext"
 import api from "../services/api"
 import Spinner from "./Spinner"
+import CreateCommentForm from "./forms/CreateCommentForm"
 
 const formatDate = (date) => {
   return (date = new Date(date).toLocaleDateString())
 }
 
-const CommentsList = ({ postId }) => {
+const CommentsList = ({ postId, postUserId }) => {
+  const { session } = useContext(AppContext)
+
   const [comments, setComments] = useState(null)
   const [apiError, setApiError] = useState(null)
+
+  const sessionId = JSON.parse(session).payload.user.userId
+  const userRoleId = JSON.parse(session).payload.user.roleId
 
   useEffect(() => {
     if (postId) {
@@ -27,7 +34,7 @@ const CommentsList = ({ postId }) => {
 
   if (apiError) {
     return (
-      <section className="shadow">
+      <section className="shadow rounded-b">
         <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
           Comments
         </h3>
@@ -40,7 +47,7 @@ const CommentsList = ({ postId }) => {
 
   if (!comments) {
     return (
-      <section className="shadow pb-10">
+      <section className="shadow pb-10 rounded-b">
         <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
           Comments
         </h3>
@@ -51,31 +58,34 @@ const CommentsList = ({ postId }) => {
 
   if (!comments.length) {
     return (
-      <section className="shadow pb-10">
-        <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
-          Comments
-        </h3>
-        <p className="text-center text-2xl">No comments found 😥</p>
+      <section className="mb-10">
+        <CreateCommentForm postId={postId} />
+        <div className="shadow border pb-10 rounded">
+          <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
+            Comments
+          </h3>
+          <p className="text-center text-2xl">No comments found 😥</p>
+        </div>
       </section>
     )
   }
 
   return (
-    <section className="shadow">
-      <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
-        Comments
-      </h3>
-      <ul className="mb-10 border rounded-b">
-        {comments.map((item, index) => (
-          <Link key={item.id} href={`/comments/${item.id}`} passHref>
+    <section className="mb-10">
+      <CreateCommentForm postId={postId} />
+      <div className="shadow border break-all rounded">
+        <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
+          Comments
+        </h3>
+        <ul className="border rounded-b">
+          {comments.map((item, index) => (
             <li
-              className={`cursor-pointer hover:shadow-lg p-5 hover:bg-gray-200 ${
-                index % 2 == 0 ? null : "bg-slate-100"
-              }`}
+              key={item.id}
+              className={`p-5  ${index % 2 == 0 ? null : "bg-slate-100"}`}
             >
               <p className="mb-3 font-bold">
                 {item.author ? (
-                  <Link href={`/users/${item.user_id}`}>
+                  <Link href={`/users/${encodeURIComponent(item.user_id)}`}>
                     <a className="font-black underline hover:text-blue-500">
                       {item.author}
                     </a>
@@ -85,11 +95,22 @@ const CommentsList = ({ postId }) => {
                 )}{" "}
                 commented on <span>{formatDate(item.publicationDate)}</span>
               </p>
-              <p className="text-justify w-full">{item.content}</p>
+              <Link href={`/comments/${encodeURIComponent(item.id)}`}>
+                <a>
+                  <p className="text-justify w-full hover:bg-gray-200">
+                    {item.content}
+                  </p>
+                </a>
+              </Link>
+              {item.user_id == sessionId ||
+              postUserId == sessionId ||
+              userRoleId == 3
+                ? null
+                : null}
             </li>
-          </Link>
-        ))}
-      </ul>
+          ))}
+        </ul>
+      </div>
     </section>
   )
 }

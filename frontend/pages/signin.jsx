@@ -35,7 +35,7 @@ const Signin = () => {
           <h2 className="text-4xl font-bold mb-5">Sign In</h2>
           <Formik
             initialValues={{
-              email: "sokou34pm@gmail.com", // TODO change
+              email: "",
               password: "",
             }}
             validationSchema={displayingErrorMessagesSchema}
