@@ -8,10 +8,12 @@ const Header = ({ pagename }) => {
   const { session } = useContext(AppContext)
 
   return (
-    <header className="flex bg-slate-300 justify-between items-center mb-10 px-5 py-5">
+    <header className="flex bg-slate-700 justify-between items-center mb-10 px-5 py-5">
       <Link href="/">
         <a>
-          <h1 className="text-5xl font-bold">{pagename} | Blog project</h1>
+          <h1 className="text-4xl font-bold text-white transition-all hover:scale-105">
+            {pagename} | Blog project
+          </h1>
         </a>
       </Link>
       {session ? <AccountLink /> : <Nav />}

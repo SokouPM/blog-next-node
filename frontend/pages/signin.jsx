@@ -60,6 +60,12 @@ const Signin = () => {
                   errorType={errors.password}
                   touchedType={touched.password}
                 />
+                <p className="mb-5 text-lg">
+                  Forgotten password?{" "}
+                  <Link href="/signup">
+                    <a className="font-bold hover:underline">Click here</a>
+                  </Link>
+                </p>
                 <button
                   className="bg-green-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
                   type="submit"

@@ -1,8 +1,8 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { FiAlertTriangle } from "react-icons/fi"
-import api from "../services/api"
-import Spinner from "./Spinner"
+import api from "../../services/api"
+import Spinner from "../Spinner"
 
 const formatDate = (date) => {
   return (date = new Date(date).toLocaleDateString())

@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { useContext, useEffect, useState } from "react"
 import { FiAlertTriangle } from "react-icons/fi"
-import AppContext from "../AppContext"
-import api from "../services/api"
-import Spinner from "./Spinner"
-import CreateCommentForm from "./forms/CreateCommentForm"
+import AppContext from "../../AppContext"
+import api from "../../services/api"
+import Spinner from "../Spinner"
+import CreateCommentForm from "../forms/CreateCommentForm"
 
 const formatDate = (date) => {
   return (date = new Date(date).toLocaleDateString())

@@ -30,11 +30,15 @@ const ModifyRoleForm = ({ userId }) => {
   )
 
   if (!user || !roles) {
-    return <Spinner contentname="role form" />
+    return (
+      <section>
+        <Spinner contentname="role form" />
+      </section>
+    )
   }
 
   return (
-    <div className="mb-10 border-2 rounded shadow">
+    <section className="mb-10 border-2 rounded shadow">
       <div className="px-10 pt-6 flex items-center">
         <h3 className="text-4xl font-bold mb-5 mr-5">Modify user role :</h3>
         <Formik initialValues={{}} onSubmit={handleFormSubmit}>
@@ -62,7 +66,7 @@ const ModifyRoleForm = ({ userId }) => {
           )}
         </Formik>
       </div>
-    </div>
+    </section>
   )
 }
 
