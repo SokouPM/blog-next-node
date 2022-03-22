@@ -2,7 +2,7 @@ export const up = async (knex) => {
   await knex.schema.createTable("roles", (table) => {
     table.increments().unique()
     table.string("name").notNullable().unique()
-    table.timestamp("createdAt").defaultTo(knex.fn.now())
+    table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt")
   })
 
@@ -18,7 +18,7 @@ export const up = async (knex) => {
       .references("id")
       .inTable("roles")
       .onDelete("RESTRICT")
-    table.timestamp("createdAt").defaultTo(knex.fn.now())
+    table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt")
   })
 
@@ -33,7 +33,7 @@ export const up = async (knex) => {
       .references("id")
       .inTable("users")
       .onDelete("SET NULL")
-    table.timestamp("createdAt").defaultTo(knex.fn.now())
+    table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt")
   })
 
@@ -53,7 +53,7 @@ export const up = async (knex) => {
       .references("id")
       .inTable("posts")
       .onDelete("CASCADE")
-    table.timestamp("createdAt").defaultTo(knex.fn.now())
+    table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
     table.timestamp("updatedAt")
   })
 }
