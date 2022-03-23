@@ -38,7 +38,7 @@ const ModifyPostForm = ({ postId }) => {
   }
 
   return (
-    <div className="mb-10 border-2 rounded shadow">
+    <section className="mb-10 border-2 rounded shadow">
       <div className="px-10 pt-6">
         <h2 className="text-4xl font-bold mb-5">Modify post</h2>
         <Formik
@@ -79,7 +79,7 @@ const ModifyPostForm = ({ postId }) => {
           )}
         </Formik>
       </div>
-    </div>
+    </section>
   )
 }
 

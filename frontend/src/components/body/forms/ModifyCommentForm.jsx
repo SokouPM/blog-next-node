@@ -39,7 +39,7 @@ const CommentsForm = ({ commentId }) => {
   }
 
   return (
-    <div className="mb-10 border-2 rounded shadow">
+    <section className="mb-10 border-2 rounded shadow">
       <div className="px-10 pt-6">
         <h2 className="text-4xl font-bold mb-5">Modify comment</h2>
         <Formik
@@ -69,7 +69,7 @@ const CommentsForm = ({ commentId }) => {
           )}
         </Formik>
       </div>
-    </div>
+    </section>
   )
 }
 

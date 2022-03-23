@@ -26,7 +26,7 @@ const CreateCommentForm = ({ postId }) => {
   )
 
   return (
-    <div className="mb-10 border-2 rounded shadow">
+    <section className="mb-10 border-2 rounded shadow">
       <div className="px-10 pt-6">
         <h2 className="text-4xl font-bold mb-5">Create comment</h2>
         <Formik
@@ -56,7 +56,7 @@ const CreateCommentForm = ({ postId }) => {
           )}
         </Formik>
       </div>
-    </div>
+    </section>
   )
 }
 
