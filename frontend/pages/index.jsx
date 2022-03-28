@@ -4,7 +4,7 @@ import Layout from "../src/components/Layout"
 import CreatePostForm from "../src/components/body/forms/CreatePostForm"
 import PostsList from "../src/components/body/lists/PostsList"
 
-const Home = () => {
+const HomePage = () => {
   const { session } = useContext(AppContext)
 
   let userRoleId = null
@@ -21,4 +21,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

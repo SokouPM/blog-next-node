@@ -25,7 +25,7 @@ const displayingErrorMessagesSchema = Yup.object().shape({
     .required("Required field"),
 })
 
-const Signup = () => {
+const SignupPage = () => {
   const { signUp, signUpError } = useContext(AppContext)
   const handleFormSubmit = useCallback(
     async ({ displayName, email, password }) => {
@@ -112,6 +112,6 @@ const Signup = () => {
   )
 }
 
-Signup.noSessionOnly = true
+SignupPage.noSessionOnly = true
 
-export default Signup
+export default SignupPage

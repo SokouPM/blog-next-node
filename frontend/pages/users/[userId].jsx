@@ -7,7 +7,7 @@ import UserInfos from "../../src/components/body/UserInfos"
 
 const AccountPage = () => {
   const { session } = useContext(AppContext)
-  const userRoleId = JSON.parse(session).payload.user.roleId
+  const sessionRoleId = JSON.parse(session).payload.user.roleId
 
   const {
     query: { userId: accountId },
@@ -15,8 +15,8 @@ const AccountPage = () => {
 
   return (
     <Layout pagename={`Account: ${accountId}`}>
-      {userRoleId == 3 && !isNaN(accountId) ? (
-        <ModifyRoleForm userId={accountId} />
+      {sessionRoleId == 3 && !isNaN(accountId) ? (
+        <ModifyRoleForm sessionRoleId={sessionRoleId} userId={accountId} />
       ) : null}
       <UserInfos accountId={accountId} />
     </Layout>

@@ -13,7 +13,7 @@ const displayingErrorMessagesSchema = Yup.object().shape({
   password: Yup.string().required("Required field"),
 })
 
-const Signin = () => {
+const SigninPage = () => {
   const { signIn, signInError } = useContext(AppContext)
   const handleFormSubmit = useCallback(
     async ({ email, password }) => {
@@ -33,6 +33,7 @@ const Signin = () => {
         ) : null}
         <div className="px-10 pt-6">
           <h2 className="text-4xl font-bold mb-5">Sign In</h2>
+
           <Formik
             initialValues={{
               email: "",
@@ -62,7 +63,7 @@ const Signin = () => {
                 />
                 <p className="mb-5 text-lg">
                   Forgotten password?{" "}
-                  <Link href="/signup">
+                  <Link href="/404">
                     <a className="font-bold hover:underline">Click here</a>
                   </Link>
                 </p>
@@ -87,6 +88,6 @@ const Signin = () => {
   )
 }
 
-Signin.noSessionOnly = true
+SigninPage.noSessionOnly = true
 
-export default Signin
+export default SigninPage

@@ -49,12 +49,14 @@ export const createCommentWithUserIdAndPostId = async (req, res) => {
 export const getAllUsersWithRole = async (req, res) => {
   const usersWithRole = await UserModel.query()
     .select(
+      "users.id",
       "users.displayName",
       "users.email",
       "users.role_id",
       "roles.name as role"
     )
     .joinRelated("roles")
+    .orderBy("role_id", "desc")
 
   res.status(200).send(usersWithRole)
 }

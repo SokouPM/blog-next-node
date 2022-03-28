@@ -12,7 +12,7 @@ export const getOneCommentWithAuthorAndPostAuthor = async (req, res) => {
       "users.displayName as author",
       "posts.user_id as postAuthorId"
     )
-    .joinRelated("[users, posts]")
+    .leftJoinRelated("[users, posts]")
 
   if (!commentWithAuthor) {
     res.status(404).send({ error: "Comment not found" })

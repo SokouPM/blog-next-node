@@ -1,4 +1,5 @@
 export const up = async (knex) => {
+
   await knex.schema.createTable("roles", (table) => {
     table.increments().unique()
     table.string("name").notNullable().unique()

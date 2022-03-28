@@ -4,14 +4,22 @@ import AppContext from "../../AppContext"
 import api from "../../services/api"
 import Spinner from "../../body/Spinner"
 
-const ModifyRoleForm = ({ userId }) => {
+const ModifyRoleForm = ({ userId, sessionRoleId }) => {
   const { router } = useContext(AppContext)
   const [user, setUser] = useState(null)
   const [roles, setRoles] = useState(null)
+  const [apiError, setApiError] = useState(null)
 
   useEffect(() => {
     if (userId && !isNaN(userId)) {
-      api.get(`/users/${userId}`).then((response) => setUser(response.data))
+      api
+        .get(`/users/${userId}`)
+        .then((response) => setUser(response.data))
+        .catch((error) =>
+          setApiError(
+            error.response ? error.response.data.error : error.message
+          )
+        )
     }
   }, [userId])
 
@@ -28,6 +36,10 @@ const ModifyRoleForm = ({ userId }) => {
     },
     [router, userId]
   )
+
+  if (apiError) {
+    return null
+  }
 
   if (!user || !roles) {
     return (
