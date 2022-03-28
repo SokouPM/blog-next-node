@@ -3,8 +3,8 @@ import { Form, Formik, Field } from "formik"
 import AppContext from "../../AppContext"
 import api from "../../services/api"
 import Spinner from "../../body/Spinner"
-
-const ModifyRoleForm = ({ userId, sessionRoleId }) => {
+import Link from "next/link"
+const ModifyRoleForm = ({ userId }) => {
   const { router } = useContext(AppContext)
   const [user, setUser] = useState(null)
   const [roles, setRoles] = useState(null)
@@ -51,32 +51,39 @@ const ModifyRoleForm = ({ userId, sessionRoleId }) => {
 
   return (
     <section className="mb-10 border-2 rounded shadow">
-      <div className="px-10 pt-6 flex items-center">
-        <h3 className="text-4xl font-bold mb-5 mr-5">Modify user role :</h3>
-        <Formik initialValues={{}} onSubmit={handleFormSubmit}>
-          {() => (
-            <Form>
-              <Field
-                name="role"
-                as="select"
-                className="px-4 py-3 mr-2 rounded cursor-pointer bg-gray-200"
-                defaultValue={user.role_id}
-              >
-                {roles.map((item) => (
-                  <option key={item.id} value={item.id} name="role">
-                    {item.name}
-                  </option>
-                ))}
-              </Field>
-              <button
-                className="bg-green-500 text-white mt-2 mb-6 text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
-                type="submit"
-              >
-                Modify role
-              </button>
-            </Form>
-          )}
-        </Formik>
+      <div className="px-10 py-6 flex items-center justify-between">
+        <div className="flex items-center">
+          <h3 className="text-4xl mr-3 font-bold">Modify user role :</h3>
+          <Formik initialValues={{}} onSubmit={handleFormSubmit}>
+            {() => (
+              <Form>
+                <Field
+                  name="role"
+                  as="select"
+                  className="px-4 py-3 mr-2 rounded cursor-pointer bg-gray-200"
+                  defaultValue={user.role_id}
+                >
+                  {roles.map((item) => (
+                    <option key={item.id} value={item.id} name="role">
+                      {item.name}
+                    </option>
+                  ))}
+                </Field>
+                <button
+                  className="bg-green-500 text-white text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
+                  type="submit"
+                >
+                  Modify role
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+        <Link href="/users">
+          <a className="bg-blue-500 text-white text-lg font-bold border px-4 py-2 rounded hover:bg-blue-300 focus:outline focus:outline-3 focus:outline-blue-300 transition-all hover:scale-105">
+            Users list
+          </a>
+        </Link>
       </div>
     </section>
   )
