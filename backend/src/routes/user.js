@@ -18,7 +18,7 @@ router.post(
   auth,
   createCommentWithUserIdAndPostId
 )
-router.get("/", getAllUsersWithRole)
+router.get("/", auth, getAllUsersWithRole)
 router.get("/:userId", auth, getOneUserWithRole)
 router.get("/:userId/posts", auth, getAllPostsByUser)
 router.put("/:userId", auth, changeRole)

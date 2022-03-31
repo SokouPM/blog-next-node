@@ -4,6 +4,10 @@
   "scripts": {
     "dev": "nodemon server.js"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "devDependencies": {
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.4.0",
@@ -23,5 +27,8 @@
     "pino": "^7.8.0",
     "pino-pretty": "^7.5.1",
     "yup": "^0.32.11"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }

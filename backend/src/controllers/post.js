@@ -75,9 +75,9 @@ export const deleteOnePost = async (req, res) => {
     params: { postId },
   } = req
 
-  const company = await PostModel.query().findById(postId)
+  const post = await PostModel.query().findById(postId)
 
-  if (!company) {
+  if (!post) {
     res.status(404).send({ error: "Post not found" })
 
     return
