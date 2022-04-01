@@ -34,11 +34,15 @@ const rawConfig = {
   db: {
     client: process.env.DB_CLIENT,
     connection: {
+      connectionString: process.env.DATABASE_URL,
       database: process.env.DB_DATABASE,
       host: process.env.DB_HOST,
       password: process.env.DB_PASSWORD,
       port: process.env.DB_PORT,
       user: process.env.DB_USER,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     },
     migrations: {
       stub: "./src/db/migration.stub",

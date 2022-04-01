@@ -45,7 +45,7 @@ export const getAllCommentsByPostWithAutor = async (req, res) => {
     .$relatedQuery("comments")
     .select("comments.*", "users.displayName as author")
     .leftJoinRelated("users")
-    .orderBy("createdAt", "desc")
+    .orderBy("createdAt")
 
   res.status(200).send(comments)
 }
