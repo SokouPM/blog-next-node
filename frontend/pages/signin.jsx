@@ -24,7 +24,7 @@ const SigninPage = () => {
 
   return (
     <Layout pagename="Sign In">
-      <div className="w-4/5 mx-auto border-2 rounded shadow">
+      <div className="w-4/5 mx-auto border-2 border-pink-700 rounded">
         {signInError ? (
           <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
             <FiAlertTriangle className="text-5xl mr-3" />
@@ -32,7 +32,7 @@ const SigninPage = () => {
           </div>
         ) : null}
         <div className="px-10 pt-6">
-          <h2 className="text-4xl font-bold mb-5">Sign In</h2>
+          <h2 className="text-4xl font-bold text-white mb-5">Sign In</h2>
 
           <Formik
             initialValues={{
@@ -61,14 +61,14 @@ const SigninPage = () => {
                   errorType={errors.password}
                   touchedType={touched.password}
                 />
-                <p className="mb-5 text-lg">
+                <p className="mb-5 text-lg  text-white">
                   Forgotten password?{" "}
                   <Link href="/404">
                     <a className="font-bold hover:underline">Click here</a>
                   </Link>
                 </p>
                 <button
-                  className="bg-green-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
+                  className="bg-pink-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-pink-300 focus:outline focus:outline-3 focus:outline-pink-300  transition-all hover:scale-105"
                   type="submit"
                 >
                   Sign In
@@ -77,7 +77,7 @@ const SigninPage = () => {
             )}
           </Formik>
         </div>
-        <p className="mt-6 p-5 text-xl text-center bg-slate-200">
+        <p className="mt-6 p-5 text-xl text-center text-white bg-pink-700">
           ⚠ Don't have an account?{" "}
           <Link href="/signup">
             <a className="font-bold hover:underline">Sign Up</a>

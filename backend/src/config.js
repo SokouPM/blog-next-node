@@ -40,9 +40,6 @@ const rawConfig = {
       password: process.env.DB_PASSWORD,
       port: process.env.DB_PORT,
       user: process.env.DB_USER,
-      ssl: {
-        rejectUnauthorized: false,
-      },
     },
     migrations: {
       stub: "./src/db/migration.stub",

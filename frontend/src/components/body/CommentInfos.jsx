@@ -65,11 +65,11 @@ const CommentInfos = ({ commentId }) => {
   return (
     <section>
       {!isModified ? (
-        <div className="mb-8 p-10 border-2 rounded shadow">
+        <div className="mb-8 p-10 border-2 border-pink-500 text-white rounded shadow">
           <p className="mb-3 break-all font-bold">
             {comment.author ? (
               <Link href={`/users/${encodeURIComponent(comment.user_id)}`}>
-                <a className="font-bold underline hover:text-blue-500">
+                <a className="font-bold underline hover:text-pink-500">
                   {comment.author}
                 </a>
               </Link>
@@ -91,14 +91,14 @@ const CommentInfos = ({ commentId }) => {
           <section className="w-max mb-10 mx-auto">
             {comment.user_id == sessionId ? (
               <button
-                className="bg-blue-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-blue-300 focus:outline focus:outline-3 focus:outline-blue-300 transition-all hover:scale-105"
+                className="bg-pink-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-pink-300 focus:outline focus:outline-3 focus:outline-pink-300 transition-all hover:scale-105"
                 onClick={() => setIsModified(true)}
               >
                 Modify comment
               </button>
             ) : null}
             <button
-              className="bg-red-500 text-white mt-2 ml-2 text-lg font-bold border px-4 py-2 rounded  hover:bg-red-300 focus:outline focus:outline-3 focus:outline-red-300 transition-all hover:scale-105"
+              className="bg-red-700 text-white mt-2 ml-2 text-lg font-bold border px-4 py-2 rounded  hover:bg-red-400 focus:outline focus:outline-3 focus:outline-red-400 transition-all hover:scale-105"
               onClick={deleteComment}
             >
               Delete comment

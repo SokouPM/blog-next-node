@@ -61,7 +61,7 @@ const ModifyAccountForm = ({ userId }) => {
   }
 
   return (
-    <section className="w-4/5 mx-auto border-2 rounded shadow">
+    <section className="w-4/5 mx-auto border-2 rounded border-pink-700 shadow">
       {apiError ? (
         <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
           <FiAlertTriangle className="text-5xl mr-3" />
@@ -69,7 +69,9 @@ const ModifyAccountForm = ({ userId }) => {
         </div>
       ) : null}
       <div className="px-10 py-6">
-        <h2 className="text-4xl font-bold mb-5">Modify account</h2>
+        <h2 className="text-4xl font-bold text-pink-600 mb-5">
+          Modify account
+        </h2>
         <Formik
           initialValues={{
             displayName: user.displayName,
@@ -108,7 +110,7 @@ const ModifyAccountForm = ({ userId }) => {
                 touchedType={touched.passwordConfirm}
               />
               <button
-                className="bg-green-500 text-white mt-2 text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
+                className="bg-pink-500 text-white mt-2 text-lg font-bold border px-4 py-2 rounded hover:bg-pink-300 focus:outline focus:outline-3 focus:outline-pink-300  transition-all hover:scale-105"
                 type="submit"
               >
                 Modify account

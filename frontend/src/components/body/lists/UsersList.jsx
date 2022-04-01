@@ -31,7 +31,7 @@ const UsersList = () => {
   if (!users.length) {
     return (
       <section>
-        <p className="text-center text-2xl">
+        <p className="text-center text-pink-200 text-2xl">
           How did you get to this page if there are no users? 🤨👺
         </p>
       </section>
@@ -40,15 +40,15 @@ const UsersList = () => {
 
   return (
     <section>
-      <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <h3 className="flex items-center text-white justify-center py-5 bg-pink-700 rounded-t text-3xl font-bold">
         Users lists
       </h3>
-      <ul className="mb-10 border break-all rounded-b shadow">
+      <ul className="mb-10 border border-pink-700 break-all rounded-b shadow">
         {users.map((item, index) => (
           <li
             key={item.id}
-            className={`flex items-center justify-between px-2 py-2 ${
-              index % 2 == 0 ? null : "bg-slate-100"
+            className={`flex items-center justify-between text-white px-2 py-2 ${
+              index % 2 == 0 ? "bg-black" : "bg-white/5"
             }`}
           >
             <div className="flex items-center justify-between text-xl">
@@ -68,7 +68,7 @@ const UsersList = () => {
             </div>
             <Link href={`users/${item.id}`}>
               <a
-                className="bg-green-500 text-white text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
+                className="bg-pink-500 text-white text-lg font-bold border px-4 py-2 rounded hover:bg-pink-300 focus:outline focus:outline-3 focus:outline-pink-300  transition-all hover:scale-105"
                 type="submit"
               >
                 Account

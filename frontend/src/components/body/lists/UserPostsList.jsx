@@ -27,8 +27,8 @@ const UserPostsList = ({ userId }) => {
 
   if (apiError) {
     return (
-      <section className="shadow rounded-b">
-        <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <section className="border border-pink-700 rounded-b">
+        <h3 className="flex items-center justify-center py-5 text-white bg-pink-700 rounded-t text-3xl font-bold">
           User posts
         </h3>
         <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
@@ -40,8 +40,8 @@ const UserPostsList = ({ userId }) => {
 
   if (!posts) {
     return (
-      <section className="shadow pb-10 rounded-b">
-        <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <section className="border border-pink-700 pb-10 rounded">
+        <h3 className="flex items-center justify-center mb-10 py-5 text-white bg-pink-700 rounded-t text-3xl font-bold">
           User posts
         </h3>
         <Spinner contentname="posts" />
@@ -51,8 +51,8 @@ const UserPostsList = ({ userId }) => {
 
   if (!posts.length) {
     return (
-      <section className="shadow pb-10 rounded-b">
-        <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <section className="border border-pink-700 pb-10 rounded">
+        <h3 className="flex items-center justify-center mb-10 py-5 text-white bg-pink-700 rounded-t text-3xl font-bold">
           User posts
         </h3>
         <p className="text-center text-2xl">No post found 😥</p>
@@ -61,16 +61,18 @@ const UserPostsList = ({ userId }) => {
   }
 
   return (
-    <section className="shadow rounded-b">
-      <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
+    <section className="border border-pink-700 rounded mb-10">
+      <h3 className="flex items-center justify-center py-5 text-white bg-pink-700 rounded-t text-3xl font-bold">
         User posts
       </h3>
-      <ul className="mb-10 max-h-96 border break-all rounded-b overflow-x-auto">
+      <ul className="max-h-96 break-all text-white rounded-b overflow-x-auto">
         {posts.map((item, index) => (
           <Link key={item.id} href={`/posts/${item.id}`} passHref>
             <li
-              className={`cursor-pointer hover:shadow-lg p-5 hover:bg-gray-200 ${
-                index % 2 == 0 ? null : "bg-slate-100"
+              className={`cursor-pointer p-5 ${
+                index % 2 == 0
+                  ? "bg-black hover:bg-white/20"
+                  : "bg-white/5 hover:bg-white/25"
               }`}
             >
               <p className="text-4xl font-bold">{item.title}</p>

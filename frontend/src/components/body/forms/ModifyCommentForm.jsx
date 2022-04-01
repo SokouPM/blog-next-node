@@ -39,9 +39,9 @@ const CommentsForm = ({ commentId }) => {
   }
 
   return (
-    <section className="mb-10 border-2 rounded shadow">
+    <section className="mb-10 border-2 rounded border-pink-700">
       <div className="px-10 pt-6">
-        <h2 className="text-4xl font-bold mb-5">Modify comment</h2>
+        <h2 className="text-4xl font-bold text-white mb-5">Modify comment</h2>
         <Formik
           initialValues={{
             content: comment.content,
@@ -60,7 +60,7 @@ const CommentsForm = ({ commentId }) => {
                 touchedType={touched.content}
               />
               <button
-                className="bg-green-500 text-white mt-2 mb-6 text-lg font-bold border px-4 py-2 rounded hover:bg-green-300 focus:outline focus:outline-3 focus:outline-green-300  transition-all hover:scale-105"
+                className="bg-pink-500 text-white mt-2 mb-6 text-lg font-bold border px-4 py-2 rounded hover:bg-pink-300 focus:outline focus:outline-3 focus:outline-pink-300  transition-all hover:scale-105"
                 type="submit"
               >
                 Modify comment

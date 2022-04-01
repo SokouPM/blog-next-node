@@ -15,6 +15,11 @@ const HomePage = () => {
 
   return (
     <Layout pagename="Home">
+      {!session ? (
+        <div className="text-white text-3xl text-center mb-10">
+          Welcome, create an account or login to post or comment 😋
+        </div>
+      ) : null}
       {userRoleId && userRoleId > 1 ? <CreatePostForm /> : null}
       <PostsList />
     </Layout>

@@ -7,7 +7,7 @@ const Layout = (props) => {
   return (
     <div {...otherProps}>
       <Head>
-        <title>{props.pagename} | Blog project</title>
+        <title>{props.pagename} | KikooBlog ❤❤❤</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content="A blog in React/Node" />
         <link rel="icon" href="/favicon.ico" />

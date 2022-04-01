@@ -16,7 +16,7 @@ const AccountLink = () => {
         </a>
       </Link>
       <button
-        className="p-3 text-2xl text-white bg-red-500 cursor-pointer rounded-full hover:bg-red-300 focus:outline focus:outline-3 focus:outline-red-300 transition-all hover:scale-105"
+        className="p-3 text-2xl text-white bg-black cursor-pointer rounded-full hover:bg-red-300 focus:outline focus:outline-3 focus:outline-red-300 transition-all hover:scale-105"
         onClick={signOut}
       >
         <RiLogoutBoxFill />

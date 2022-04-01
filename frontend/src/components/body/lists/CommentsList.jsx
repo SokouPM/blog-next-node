@@ -34,11 +34,11 @@ const CommentsList = ({ postId, postUserId }) => {
 
   if (apiError) {
     return (
-      <section className="shadow rounded-b">
-        <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <section className="border border-pink-800 mb-10 rounded">
+        <h3 className="flex items-center justify-center py-5 bg-pink-800 rounded-t text-3xl font-bold">
           Comments
         </h3>
-        <div className="w-full mb-7 py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
+        <div className="w-full py-2 bg-red-200 flex items-center justify-center text-red-600 text-center font-bold text-2xl rounded">
           <FiAlertTriangle className="text-5xl mr-3" /> {apiError}
         </div>
       </section>
@@ -47,8 +47,8 @@ const CommentsList = ({ postId, postUserId }) => {
 
   if (!comments) {
     return (
-      <section className="shadow pb-10 rounded-b">
-        <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <section className="border border-pink-800 mb-10 pb-10 rounded-b">
+        <h3 className="flex items-center justify-center mb-10 py-5 bg-pink-800 rounded-t text-3xl font-bold">
           Comments
         </h3>
         <Spinner contentname="comments" />
@@ -61,7 +61,7 @@ const CommentsList = ({ postId, postUserId }) => {
       <section className="mb-10">
         <CreateCommentForm postId={postId} />
         <div className="shadow border pb-10 rounded">
-          <h3 className="flex items-center justify-center mb-10 py-5 bg-slate-300 rounded-t text-3xl font-bold">
+          <h3 className="flex items-center justify-center mb-10 py-5 bg-pink-800 rounded-t text-3xl font-bold">
             Comments
           </h3>
           <p className="text-center text-2xl">No comments found 😥</p>
@@ -73,20 +73,22 @@ const CommentsList = ({ postId, postUserId }) => {
   return (
     <section className="mb-10">
       <CreateCommentForm postId={postId} />
-      <div className="shadow border break-all rounded">
-        <h3 className="flex items-center justify-center py-5 bg-slate-300 rounded-t text-3xl font-bold">
+      <div className="shadow border border-pink-700 break-all rounded">
+        <h3 className="flex items-center justify-center py-5 bg-pink-800 text-white rounded-t text-3xl font-bold">
           Comments
         </h3>
-        <ul className="border rounded-b">
+        <ul className="border border-pink-700 rounded-b">
           {comments.map((item, index) => (
             <li
               key={item.id}
-              className={`p-5  ${index % 2 == 0 ? null : "bg-slate-100"}`}
+              className={`p-5 text-white ${
+                index % 2 == 0 ? "bg-black" : "bg-white/5"
+              }`}
             >
               <p className="mb-3 font-bold">
                 {item.author ? (
                   <Link href={`/users/${encodeURIComponent(item.user_id)}`}>
-                    <a className="font-black underline hover:text-blue-500">
+                    <a className="font-black underline hover:text-pink-500">
                       {item.author}
                     </a>
                   </Link>
@@ -97,7 +99,7 @@ const CommentsList = ({ postId, postUserId }) => {
               </p>
               <Link href={`/comments/${encodeURIComponent(item.id)}`}>
                 <a>
-                  <p className="text-justify w-full hover:bg-gray-200">
+                  <p className="text-justify w-full hover:bg-pink-200">
                     {item.content}
                   </p>
                 </a>

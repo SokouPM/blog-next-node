@@ -5,7 +5,12 @@
 html,
 body,
 #__next {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
   height: 100%;
+}
+
+body {
+  background-color: black;
 }
 
 .errorField {

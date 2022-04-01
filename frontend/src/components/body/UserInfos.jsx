@@ -71,32 +71,32 @@ const UserInfos = ({ accountId }) => {
   return (
     <>
       <section>
-        <div className="flex mb-10">
-          <div className="w-2/3">
-            <p className="pt-4 pb-2 text-4xl font-bold border-b-2">
+        <div className="flex items-end justify-center mb-10">
+          <div className="w-2/3 text-white">
+            <p className="pt-4 pb-2 text-4xl font-bold border-b-2 border-pink-500">
               Display name:{" "}
               <span className="font-semibold">{user.displayName}</span>
             </p>
-            <p className="pt-4 pb-2 text-4xl font-bold border-b-2">
+            <p className="pt-4 pb-2 text-4xl font-bold border-b-2 border-pink-500">
               Email: <span className="font-semibold">{user.email}</span>
             </p>
-            <p className="pt-4 pb-2 text-4xl font-bold border-b-2">
+            <p className="pt-4 pb-2 text-4xl font-bold border-b-2 border-pink-500">
               Role: <span className="font-semibold">{user.role}</span>
             </p>
           </div>
-          <div className="w-1/3 border-2"></div>
+          <div className="w-1/3 h-64 border-2 border-pink-500"></div>
         </div>
         {accountId == sessionId || userRoleId == 3 ? (
           <div className="mb-10 w-max mx-auto">
             {accountId == sessionId ? (
               <Link href={`/users/${accountId}/modify-account`} passHref>
-                <button className="bg-blue-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-blue-300 focus:outline focus:outline-3 focus:outline-blue-300 transition-all hover:scale-105">
+                <button className="bg-pink-500 text-white mt-2 mr-2 text-lg font-bold border px-4 py-2 rounded hover:bg-pink-300 focus:outline focus:outline-3 focus:outline-pink-300 transition-all hover:scale-105">
                   Modify account
                 </button>
               </Link>
             ) : null}
             <button
-              className="bg-red-500 text-white mt-2 ml-2 text-lg font-bold border px-4 py-2 rounded  hover:bg-red-300 focus:outline focus:outline-3 focus:outline-red-300 transition-all hover:scale-105"
+              className="bg-red-700 text-white mt-2 ml-2 text-lg font-bold border px-4 py-2 rounded  hover:bg-red-400 focus:outline focus:outline-3 focus:outline-red-400 transition-all hover:scale-105"
               onClick={deleteUser}
             >
               Delete account
