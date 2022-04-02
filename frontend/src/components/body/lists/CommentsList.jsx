@@ -64,7 +64,7 @@ const CommentsList = ({ postId, postUserId }) => {
           <h3 className="flex items-center justify-center mb-10 py-5 bg-pink-800 rounded-t text-3xl font-bold">
             Comments
           </h3>
-          <p className="text-center text-2xl">No comments found 😥</p>
+          <p className="text-center text-white text-2xl">No comments found 😥</p>
         </div>
       </section>
     )
