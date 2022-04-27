@@ -55,7 +55,7 @@ const UserPostsList = ({ userId }) => {
         <h3 className="flex items-center justify-center mb-10 py-5 text-white bg-pink-700 rounded-t text-3xl font-bold">
           User posts
         </h3>
-        <p className="text-center text-2xl">No post found 😥</p>
+        <p className="text-center text-2xl text-white">No post found 😥</p>
       </section>
     )
   }
